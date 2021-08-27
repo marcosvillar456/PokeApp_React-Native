@@ -2,49 +2,41 @@ import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { colors, backgroundColors } from "../assets/colors";
 function Card({ Pokemon }) {
-  if (Pokemon === "error") {
-    return (
+  return Pokemon === "error" ? (
+    <View>
+      <Text>Search Pokemons pls</Text>
+    </View>
+  ) : (
+    <View
+      style={{
+        ...style.card,
+        backgroundColor: backgroundColors[Pokemon?.types[0].name],
+      }}
+    >
       <View>
-        <Text>Pokemon not found</Text>
-      </View>
-    );
-  } else {
-    return !Pokemon.name ? (
-      <View>
-        <Text>Search Pokemons pls</Text>
-      </View>
-    ) : (
-      <View
-        style={{
-          ...style.card,
-          backgroundColor: backgroundColors[Pokemon.types[0].name],
-        }}
-      >
-        <View>
-          <Text>{Pokemon.id}</Text>
-          <Text style={style.name}>{Pokemon.name}</Text>
-          <View style={{ flexDirection: "row" }}>
-            {Pokemon.types?.map((type) => (
-              <View
-                key={type.name}
-                style={{
-                  backgroundColor: colors[type.name],
-                  minWidth: 50,
-                  alignItems: "center",
-                  margin: 5,
-                  padding: 5,
-                  borderRadius: 10,
-                }}
-              >
-                <Text>{type.name}</Text>
-              </View>
-            ))}
-          </View>
+        <Text>{Pokemon.id}</Text>
+        <Text style={style.name}>{Pokemon.name}</Text>
+        <View style={{ flexDirection: "row" }}>
+          {Pokemon.types?.map((type) => (
+            <View
+              key={type.name}
+              style={{
+                backgroundColor: colors[type.name],
+                minWidth: 50,
+                alignItems: "center",
+                margin: 5,
+                padding: 5,
+                borderRadius: 10,
+              }}
+            >
+              <Text>{type.name}</Text>
+            </View>
+          ))}
         </View>
-        <Image style={style.img} source={{ uri: `${Pokemon.img}` }}></Image>
       </View>
-    );
-  }
+      <Image style={style.img} source={{ uri: `${Pokemon.img}` }}></Image>
+    </View>
+  );
 }
 export default Card;
 const style = StyleSheet.create({
@@ -61,9 +53,10 @@ const style = StyleSheet.create({
     fontWeight: "700",
   },
   img: {
-    width: 100,
-    height: 100,
+    width: 70,
+    height: 70,
+    top: 20,
     position: "absolute",
-    right: 0,
+    right: 10,
   },
 });

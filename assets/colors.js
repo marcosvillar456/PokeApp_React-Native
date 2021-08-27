@@ -12,7 +12,7 @@ const colors = {
   ground: "#DD7748",
   ice: "#b9d5ef",
   normal: "#9DA0AA",
-  poison: "#violet",
+  poison: "violet",
   psychic: "#f95587",
   rock: "#b6a136",
   steel: "#545e60",

@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { TextInput, View, StyleSheet } from "react-native";
+
 import axios from "axios";
-function Input({ SetPokemon }) {
+function Input({ props }) {
   const [Search, SetSearch] = useState("");
 
   async function submit() {
     const peticion =
       await axios.get(`https://api-pokemon-marcos.herokuapp.com/pokemons?name=${Search}
     `);
-    const data = peticion.data;
-    SetPokemon(data);
-    console.log(data);
+    const data = await peticion.data;
+    props.navigate("Pokemon", { Pokemon: data });
   }
   return (
     <View style={styles.input}>
