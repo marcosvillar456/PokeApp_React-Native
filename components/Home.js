@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import Input from "./input";
 import Card from "./Card";
+import Loading from "./Loading";
 import commonStyles from "../Styles";
 import axios from "axios";
 export default function Home(props) {
@@ -24,17 +25,17 @@ export default function Home(props) {
     fetchMyAPI();
   }, []);
 
-  return (
+  return !Pokemon[0] ? (
+    <Loading />
+  ) : (
     <View>
       <ImageBackground
         resizeMode="contain"
-        style={{ marginTop: 40, width: "100%", height: "100%" }}
+        style={{ width: "100%", height: "100%" }}
       >
         <View style={commonStyles.container}>
           <Text style={commonStyles.heading}> PokeApp</Text>
-          <Text>
-            Search for pokemon by name or usifn the National Pokedex number
-          </Text>
+          <Text>Search for pokemon by name</Text>
           <View style={{ marginVertical: 10 }}>
             <Input props={props.navigation} />
           </View>

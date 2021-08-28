@@ -39,4 +39,5 @@ const backgroundColors = {
   steel: "#4C91B2",
   water: "#58ABF6",
 };
+
 export { colors, backgroundColors };

@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, ImageBackground } from "react-native";
+import React from "react";
 import Home from "./components/Home";
-import Card from "./components/Card";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import More from "./components/More";
